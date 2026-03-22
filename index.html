@@ -228,10 +228,6 @@
                 @apply text-primary bg-primary/10 font-semibold;
             }
             
-            /* Project cards - mobile optimized */
-            .project-card {
-                @apply bg-gray-900/60 backdrop-blur-md border border-gray-800 hover:border-gray-700 transition-all duration-500 hover:-translate-y-2;
-            }
             
             /* Touch targets */
             button, a, .clickable {
@@ -261,6 +257,98 @@
                 max-height: 500px;
                 opacity: 1;
             }
+
+        /* Glass Card */
+.cert-card {
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* Hover Glow */
+.cert-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 153, 255, 0.4);
+}
+
+/* Image */
+.cert-card img {
+  height: 60px;
+  margin: 0 auto 15px;
+  transition: transform 0.4s ease;
+}
+
+.cert-card:hover img {
+  transform: scale(1.1);
+}
+
+/* Title */
+.cert-card h3 {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* Text */
+.cert-card p {
+  color: #aaa;
+  font-size: 13px;
+}
+
+/* Neon Border Animation */
+.cert-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(45deg, #00f7ff, #8a2be2, #ff00ff);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.cert-card:hover::before {
+  opacity: 1;
+}
+
+        .skill-card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 12px;
+  color: #ddd;
+  transition: all 0.3s ease;
+}
+
+.skill-card img {
+  width: 30px;
+  margin: 0 auto 6px;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Glow Effects */
+.glow-blue:hover { box-shadow: 0 0 15px #00f7ff; }
+.glow-purple:hover { box-shadow: 0 0 15px #a855f7; }
+.glow-pink:hover { box-shadow: 0 0 15px #ec4899; }
+.glow-green:hover { box-shadow: 0 0 15px #22c55e; }
+.glow-yellow:hover { box-shadow: 0 0 15px #eab308; }
+.glow-red:hover { box-shadow: 0 0 15px #ef4444; }
         }
     </style>
 </head>
@@ -413,85 +501,137 @@
         </div>
     </section>
 
-    <!-- About Section - Mobile First -->
-    <section id="about" class="relative z-10 section-padding">
-        <div class="container-custom">
-            <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-16 lg:mb-24">
-                <div class="relative reveal order-2 lg:order-1">
-                    <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto aspect-square">
-                        <div class="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                        <img src="karthikk.jpg" alt="Cheeli Karthik" class="relative w-full h-full object-cover rounded-2xl border border-white/10 shadow-2xl z-10 grayscale hover:grayscale-0 transition duration-500" loading="lazy">
+    <!-- About Section -->
+<section id="about" class="relative z-10 section-padding">
+    <div class="container-custom">
+        <div class="flex flex-col lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16">
+
+            <!-- Image -->
+            <div class="relative reveal order-2 lg:order-1">
+                <div class="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto aspect-square">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
+                    <img src="karthikk.jpg" alt="Cheeli Karthik"
+                        class="relative w-full h-full object-cover rounded-2xl border border-white/10 shadow-2xl z-10 grayscale hover:grayscale-0 transition duration-500">
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="space-y-5 reveal order-1 lg:order-2">
+                <h2 class="text-3xl sm:text-4xl font-bold">
+                    About <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Me</span>
+                </h2>
+
+                <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                    I'm an <span class="text-white font-semibold">AI Engineer & Full Stack Developer</span> focused on building 
+                    real-world intelligent systems using modern technologies and Large Language Models.
+                </p>
+
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    I specialize in developing <span class="text-white">AI-powered applications</span>, automation platforms, 
+                    and scalable backend systems using Flask, APIs, and LLM integrations.
+                </p>
+
+                <p class="text-gray-400 text-sm sm:text-base leading-relaxed">
+                    Currently building <span class="text-purple-400 font-medium">FlowForge</span> — an AI workflow automation system 
+                    powered by intelligent agents and dynamic task execution.
+                </p>
+
+                <!-- Highlights -->
+                <div class="grid grid-cols-2 gap-4 pt-4">
+                    <div class="glass p-4 rounded-xl border-l-4 border-blue-500 hover:scale-105 transition">
+                        <h4 class="text-lg font-bold text-white">AI Systems</h4>
+                        <p class="text-xs text-gray-400">LLM + Agents</p>
+                    </div>
+                    <div class="glass p-4 rounded-xl border-l-4 border-purple-500 hover:scale-105 transition">
+                        <h4 class="text-lg font-bold text-white">Full Stack</h4>
+                        <p class="text-xs text-gray-400">Web Development</p>
                     </div>
                 </div>
-                
-                <div class="space-y-4 sm:space-y-6 reveal order-1 lg:order-2">
-                    <h2 class="text-3xl sm:text-4xl font-bold">About <span class="text-primary">Me</span></h2>
-                    <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
-                        I am a Senior Full Stack Developer passionate about integrating <span class="text-white font-semibold">Artificial Intelligence</span> into modern web applications. 
-                    </p>
-                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
-                        My expertise lies in building end-to-end solutions, from designing intuitive user interfaces in React to architecting robust backends in Python.
-                    </p>
-                    <div class="grid grid-cols-2 gap-3 sm:gap-4 pt-2 sm:pt-4">
-                        <div class="p-3 sm:p-4 glass rounded-xl border-l-4 border-primary">
-                            <h4 class="text-xl sm:text-2xl font-bold text-white">Full Stack</h4>
-                            <p class="text-xs sm:text-sm text-gray-400">Development</p>
-                        </div>
-                        <div class="p-3 sm:p-4 glass rounded-xl border-l-4 border-accent">
-                            <h4 class="text-xl sm:text-2xl font-bold text-white">AI & ML</h4>
-                            <p class="text-xs sm:text-sm text-gray-400">Intelligent Systems</p>
-                        </div>
-                    </div>
+
+                <!-- CTA -->
+                <div class="pt-4">
+                    <a href="#projects"
+                       class="inline-block px-5 py-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm rounded-full shadow-lg hover:scale-105 transition">
+                        View My Work →
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Skills Section - Mobile First -->
-    <section id="skills" class="relative z-10 section-padding bg-black/30">
-        <div class="container-custom">
-            <div class="mb-16 lg:mb-24 reveal">
-                <h3 class="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8 flex items-center gap-2 sm:gap-3">
-                    <span class="text-gradient text-xl sm:text-2xl">#</span> Technologies & Tools
-                </h3>
-                <div class="skills-grid">
-                    <div class="glass p-3 sm:p-4 rounded-xl text-center hover:bg-white/10 transition hover:scale-105">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2">
-                        <span class="text-xs sm:text-sm">Python</span>
-                    </div>
-                    <div class="glass p-3 sm:p-4 rounded-xl text-center hover:bg-white/10 transition hover:scale-105">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2">
-                        <span class="text-xs sm:text-sm">React</span>
-                    </div>
-                    <div class="glass p-3 sm:p-4 rounded-xl text-center hover:bg-white/10 transition hover:scale-105">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2">
-                        <span class="text-xs sm:text-sm">JavaScript</span>
-                    </div>
-                    <div class="glass p-3 sm:p-4 rounded-xl text-center hover:bg-white/10 transition hover:scale-105">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2">
-                        <span class="text-xs sm:text-sm">PostgreSQL</span>
-                    </div>
-                    <div class="glass p-3 sm:p-4 rounded-xl text-center hover:bg-white/10 transition hover:scale-105">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2 invert">
-                        <span class="text-xs sm:text-sm">Django</span>
-                    </div>
-                    <div class="glass p-3 sm:p-4 rounded-xl text-center hover:bg-white/10 transition hover:scale-105">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2">
-                        <span class="text-xs sm:text-sm">Docker</span>
-                    </div>
-                    <div class="glass p-3 sm:p-4 rounded-xl text-center hover:bg-white/10 transition hover:scale-105">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2">
-                        <span class="text-xs sm:text-sm">Git</span>
-                    </div>
-                    <div class="glass p-3 sm:p-4 rounded-xl text-center hover:bg-white/10 transition hover:scale-105">
-                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" class="w-8 h-8 sm:w-10 sm:h-10 mx-auto mb-1 sm:mb-2">
-                        <span class="text-xs sm:text-sm">Tailwind</span>
-                    </div>
+    <!-- Skills Section -->
+<section id="skills" class="relative z-10 section-padding bg-black/30">
+    <div class="container-custom">
+
+        <div class="mb-16 reveal">
+            <h3 class="text-2xl sm:text-3xl font-bold mb-8 flex items-center gap-2">
+                🚀 Technologies & AI Skills
+            </h3>
+
+            <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-4">
+
+                <!-- Core Tech -->
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+                    <span>Python</span>
                 </div>
+
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+                    <span>React</span>
+                </div>
+
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg">
+                    <span>JavaScript</span>
+                </div>
+
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg">
+                    <span>PostgreSQL</span>
+                </div>
+
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" class="invert">
+                    <span>Django</span>
+                </div>
+
+                <div class="skill-card">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg">
+                    <span>Docker</span>
+                </div>
+
+                <!-- AI Skills -->
+                <div class="skill-card glow-blue">
+                    🤖 <span>LLM Integration</span>
+                </div>
+
+                <div class="skill-card glow-purple">
+                    🧠 <span>AI Agents</span>
+                </div>
+
+                <div class="skill-card glow-pink">
+                    ⚡ <span>Prompt Engineering</span>
+                </div>
+
+                <div class="skill-card glow-green">
+                    🔗 <span>API Automation</span>
+                </div>
+
+                <div class="skill-card glow-yellow">
+                    📊 <span>Machine Learning</span>
+                </div>
+
+                <div class="skill-card glow-red">
+                    🔍 <span>NLP Systems</span>
+                </div>
+
             </div>
         </div>
-    </section>
-
+    </div>
+</section>
+    
     <!-- Experience Section - Mobile First -->
     <section id="experience" class="section-padding px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
@@ -580,100 +720,66 @@
         </div>
     </section>
 
-    <!-- Certifications Section - Mobile First -->
-    <section id="certifications" class="section-padding bg-black/30">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-2 reveal">
-                My <span class="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Certifications</span>
-            </h2>
-            <p class="text-gray-400 text-center mb-8 sm:mb-12 lg:mb-14 max-w-2xl mx-auto text-sm sm:text-base reveal">
-                Professional certifications and achievements
-            </p>
+   <section id="certifications" class="section-padding bg-gradient-to-b from-black via-gray-900 to-black relative">
 
-            <div class="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-7">
-                <!-- Card 1 -->
-                <a href="Spoken Tutorial.pdf" target="_blank" class="group bg-gray-900/60 backdrop-blur-md rounded-2xl border border-gray-700 overflow-hidden shadow-lg hover:shadow-blue-500/20 hover:-translate-y-2 transition-all duration-500">
-                    <div class="p-4 sm:p-5">
-                        <div class="bg-white/5 rounded-xl p-3 sm:p-4 flex items-center justify-center h-20 sm:h-24 lg:h-28 mb-3 sm:mb-4 transition group-hover:bg-white/10">
-                            <img src="iitbombay.png" class="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-110" loading="lazy">
-                        </div>
-                        <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-white text-center mb-2 leading-snug">
-                            IIT Bombay - C Language
-                        </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm text-center leading-relaxed hidden sm:block">
-                            C programming fundamentals and structured coding.
-                        </p>
-                        <div class="mt-3 sm:mt-4 text-center">
-                            <span class="text-blue-400 text-xs sm:text-sm font-medium group-hover:text-blue-300">
-                                View →
-                            </span>
-                        </div>
-                    </div>
-                </a>
+    <!-- Glow Background -->
+    <div class="absolute inset-0 opacity-20 blur-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
 
-                <!-- Card 2 -->
-                <a href="Coursera FIBMI9IHD952.pdf" target="_blank" class="group bg-gray-900/60 backdrop-blur-md rounded-2xl border border-gray-700 overflow-hidden shadow-lg hover:shadow-purple-500/20 hover:-translate-y-2 transition-all duration-500">
-                    <div class="p-4 sm:p-5">
-                        <div class="bg-white/5 rounded-xl p-3 sm:p-4 flex items-center justify-center h-20 sm:h-24 lg:h-28 mb-3 sm:mb-4 transition group-hover:bg-white/10">
-                            <img src="ibm.png" class="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-110" loading="lazy">
-                        </div>
-                        <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-white text-center mb-2">
-                            Python for Data Science
-                        </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm text-center hidden sm:block">
-                            Data analysis, AI basics with Python libraries.
-                        </p>
-                        <div class="mt-3 sm:mt-4 text-center">
-                            <span class="text-purple-400 text-xs sm:text-sm font-medium group-hover:text-purple-300">
-                                View →
-                            </span>
-                        </div>
-                    </div>
-                </a>
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
 
-                <!-- Card 3 -->
-                <a href="Python Foundation.pdf" target="_blank" class="group bg-gray-900/60 backdrop-blur-md rounded-2xl border border-gray-700 overflow-hidden shadow-lg hover:shadow-green-500/20 hover:-translate-y-2 transition-all duration-500">
-                    <div class="p-4 sm:p-5">
-                        <div class="bg-white/5 rounded-xl p-3 sm:p-4 flex items-center justify-center h-20 sm:h-24 lg:h-28 mb-3 sm:mb-4">
-                            <img src="info.jpg" class="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-110" loading="lazy">
-                        </div>
-                        <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-white text-center mb-2">
-                            Python Foundation
-                        </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm text-center hidden sm:block">
-                            Python syntax, functions, and problem solving.
-                        </p>
-                        <div class="mt-3 sm:mt-4 text-center">
-                            <span class="text-green-400 text-xs sm:text-sm font-medium group-hover:text-green-300">
-                                View →
-                            </span>
-                        </div>
-                    </div>
-                </a>
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-3">
+            <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Certifications
+            </span>
+        </h2>
 
-                <!-- Card 4 -->
-                <a href="Cognitiveclass.pdf" target="_blank" class="group bg-gray-900/60 backdrop-blur-md rounded-2xl border border-gray-700 overflow-hidden shadow-lg hover:shadow-yellow-500/20 hover:-translate-y-2 transition-all duration-500">
-                    <div class="p-4 sm:p-5">
-                        <div class="bg-white/5 rounded-xl p-3 sm:p-4 flex items-center justify-center h-20 sm:h-24 lg:h-28 mb-3 sm:mb-4">
-                            <img src="cc.png" class="max-h-full max-w-full object-contain transition duration-500 group-hover:scale-110" loading="lazy">
-                        </div>
-                        <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-white text-center mb-2">
-                            SQL & Database
-                        </h3>
-                        <p class="text-gray-400 text-xs sm:text-sm text-center hidden sm:block">
-                            Database design, SQL queries, and joins.
-                        </p>
-                        <div class="mt-3 sm:mt-4 text-center">
-                            <span class="text-yellow-400 text-xs sm:text-sm font-medium group-hover:text-yellow-300">
-                                View →
-                            </span>
-                        </div>
-                    </div>
-                </a>
+        <p class="text-gray-400 text-center mb-12 max-w-xl mx-auto">
+            Verified achievements & professional certifications
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- CARD TEMPLATE -->
+            <!-- Use this structure for all cards -->
+
+            <!-- Card -->
+            <div onclick="openCert('Spoken Tutorial.pdf')" class="cert-card">
+                <img src="https://spoken-tutorial.org/static/spoken/images/logo.png">
+                <h3>IIT Bombay - C Language</h3>
+                <p>C programming fundamentals & structured coding.</p>
             </div>
-        </div>
-    </section>
 
+            <!-- Card -->
+            <div onclick="openCert('Coursera FIBMI9IHD952.pdf')" class="cert-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
+                <h3>Python for Data Science</h3>
+                <p>Data analysis & AI fundamentals using Python.</p>
+            </div>
+
+            <!-- Card -->
+            <div onclick="openCert('Python Foundation.pdf')" class="cert-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Infosys_logo.svg">
+                <h3>Python Foundation</h3>
+                <p>Core Python concepts & problem solving.</p>
+            </div>
+
+            <!-- Card -->
+            <div onclick="openCert('Cognitiveclass.pdf')" class="cert-card">
+                <img src="https://cognitiveclass.ai/wp-content/uploads/2018/10/cognitiveclass.png">
+                <h3>SQL & Database</h3>
+                <p>Database design, SQL queries & joins.</p>
+            </div>
+
+            <!-- Card 5 -->
+            <div onclick="openCert('#')" class="cert-card">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg">
+                <h3>Cybersecurity Fundamentals</h3>
+                <p>Network security, threat detection & risk management.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
     <!-- Projects Section - Mobile First -->
     <section id="projects" class="section-padding px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
@@ -1016,6 +1122,13 @@
         </div>
     </footer>
 
+    <div id="certModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <div class="w-[90%] h-[90%] bg-black rounded-xl overflow-hidden relative">
+        <button onclick="closeCert()" class="absolute top-3 right-4 text-white text-xl">✖</button>
+        <iframe id="certFrame" class="w-full h-full"></iframe>
+    </div>
+</div>
+
     <script>
         // 1. Enhanced Loader Logic
         window.addEventListener('load', () => {
@@ -1227,6 +1340,18 @@
                 this.style.fontSize = '16px';
             });
         });
+
+        //15 .
+        function openCert(file) {
+  document.getElementById("certModal").classList.remove("hidden");
+  document.getElementById("certFrame").src = file;
+}
+
+function closeCert() {
+  document.getElementById("certModal").classList.add("hidden");
+  document.getElementById("certFrame").src = "";
+}
+        
     </script>
 </body>
 </html>
